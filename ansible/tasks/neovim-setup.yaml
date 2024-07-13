@@ -1,0 +1,14 @@
+- name: Install Neovim Utils
+  become: true
+  pacman:
+    name: ['unzip', 'ripgrep', 'wget', 'fzf', 'tree-sitter-cli', 'fd']
+    state: latest
+  tags:
+  - neovim
+- name: Install Neovim
+  become: true
+  pacman:
+    name: neovim
+    state: latest
+  tags:
+  - neovim

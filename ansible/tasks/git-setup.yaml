@@ -1,0 +1,21 @@
+- name: Git personal email
+  git_config:
+    name: user.email
+    scope: global
+    value: "dgaitan@calicofox.dev"
+  tags:
+  - git
+- name: Git personal name
+  git_config:
+    name: user.name
+    scope: global
+    value: "ParzivalVulpine"
+  tags:
+  - git
+- name: Git default editor
+  git_config:
+    name: core.editor
+    scope: global
+    value: nvim
+  tags:
+  - git

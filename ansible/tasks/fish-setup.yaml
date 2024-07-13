@@ -1,0 +1,21 @@
+- name: Install fish
+  become: true
+  pacman:
+    name: fish
+    state: latest
+  tags:
+  - shell
+- name: Set fish as default shell
+  become: yes
+  user:
+    name: 'parzival'
+    shell: /bin/fish
+  tags:
+  - shell
+- name: Install Starship prompt
+  become: yes
+  pacman:
+    name: starship
+    state: latest
+  tags:
+  - shell

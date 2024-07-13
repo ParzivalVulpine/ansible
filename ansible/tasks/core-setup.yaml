@@ -1,0 +1,21 @@
+- name: Install base-devel bundle
+  become: true
+  pacman:
+    name: base-devel
+    state: latest
+  tags:
+  - core
+- name: Install CMake & Git
+  become: true
+  pacman:
+    name: ['cmake', 'git']
+    state: latest
+  tags:
+  - core
+- name: Install Core Utils
+  become: true
+  pacman:
+    name: ['btop', 'tldr', 'man', 'openssh', 'zoxide', 'tmux', 'github-cli']
+    state: latest
+  tags:
+  - core

@@ -1,0 +1,38 @@
+- name: Install Clang [C, C++]
+  become: true
+  pacman:
+    name: clang
+    state: latest
+  tags:
+  - c
+- name: Install Python
+  become: true
+  pacman:
+    name: ['python', 'python-pip']
+    state: latest
+  tags:
+  - python
+- name: Install Lua
+  become: true
+  pacman:
+    name: ['lua', 'luarocks']
+    state: latest
+  tags:
+  - lua
+- name: Download install script for Rust
+  get_url:
+    url: https://sh.rustup.rs
+    dest: /tmp/sh.rustup.rs
+    mode: '0755'
+    force: 'yes'
+  tags:
+  - rust
+- name: Run Rust Install Script
+  shell:
+    cmd: /tmp/sh.rustup.rs --profile=complete -y
+  tags:
+  - rust
+- name: Clean Rust install script
+  shell: rm /tmp/sh.rustup.rs
+  tags:
+  - rust

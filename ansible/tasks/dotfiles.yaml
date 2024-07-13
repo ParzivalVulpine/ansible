@@ -1,0 +1,19 @@
+- name: Install Stow
+  become: true
+  pacman:
+    name: stow
+    state: latest
+  tags:
+  - dotfiles
+- name: Clone dotfiles
+  git:
+    repo: 'https://github.com/ParzivalVulpine/dotfiles.git'
+    dest: "{{ lookup('env', 'HOME') }}/dotfiles"
+    recursive: yes
+    update: yes
+  tags:
+  - dotfiles
+- name: Stowing time
+  shell: cd $HOME/dotfiles && ./stow_this.sh
+  tags:
+  - dotfiles

@@ -1,0 +1,18 @@
+- hosts: localhost
+  name: Arch Linux
+  pre_tasks:
+    - name: Update Pacman
+      become: true
+      pacman:
+        update_cache: true
+        upgrade: true
+    - name: Install Ansible plugins
+      shell: ansible-galaxy collection install community.general
+  tasks:
+  - include_tasks: tasks/core-setup.yaml
+  - include_tasks: tasks/git-setup.yaml
+  - include_tasks: tasks/fish-setup.yaml
+  - include_tasks: tasks/dotfiles.yaml
+  - include_tasks: tasks/neovim-setup.yaml
+  - include_tasks: tasks/programming-setup.yaml
+
